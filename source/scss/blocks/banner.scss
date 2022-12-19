@@ -71,13 +71,39 @@
   }
 }
 
-.banner__icon {
-  @include iconSize(40px, 40px);
+.banner__icon-wrap {
+  @include mainSizes(40px, 40px);
   @include circleRadius;
-  background-color: $basic_img-background;
+  background-color: #F5F6FA;
+  position: relative;
+  margin-left: 10px;
 
-  @include desktopWidth {
-    @include iconSize(50px, 50px);
+  &::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-image: url(../../img/svg/banner_work-steps_icon-brackets.svg);
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+  }
+}
+
+.banner__icon-wrap-thumb {
+
+  &::before {
+    content: "";
+    background-image: url(../../img/svg/banner_icon-thumb.svg);
+  }
+}
+
+.banner__icon-wrap-cogwheel {
+
+  &::before {
+    content: "";
+    background-image: url(../../img/svg/banner_benefits_icon-cogwheel.svg);
   }
 }
 
