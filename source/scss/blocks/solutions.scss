@@ -56,7 +56,6 @@
 }
 
 .product-card__wrap {
-  position: relative;
 
   @include tabletWidth {
     @include mainSizes(460px, 268px);
@@ -71,17 +70,16 @@
   background-color: $basic_img-background;
 }
 
-.product-card__outer-circle {
-  @include mainSizes(90px, 90px);
+.product-card__icon {
+  @include iconSize(90px, 90px);
+  @include columnFlex;
   @include circleRadius;
-  background-color: $basic_white;
-  box-shadow: 0px 20px 40px -10px rgba(119, 122, 144, 0.3);
-}
-
-.product-card__inner-circle {
-  @include mainSizes(85px, 85px);
-  @include circleRadius;
+  color: $basic_white;
   background-color: $basic_orange;
+
+  @include tabletWidth {
+    @include iconSize(118px, 118px);
+  }
 }
 
 .product-card__info-wrap {
@@ -204,7 +202,7 @@
 
   @include tabletWidth {
     @include sizeSetter(18px, 21.33px);
-    padding: 36.3px 30px;
+    padding: 30px;
   }
 
   @include desktopWidth {
