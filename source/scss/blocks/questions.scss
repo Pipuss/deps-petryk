@@ -6,6 +6,7 @@
 
   @include tabletWidth {
     @include tabletPadding;
+    position: relative;
   }
 
   @include desktopWidth {
@@ -21,11 +22,51 @@
   @include tabletWidth {
     row-gap: 88px;
   }
+
+  @include desktopWidth {
+    height: auto;
+    row-gap: 70px;
+  }
 }
 
 .user-field {
   margin: 0;
   padding: 0;
+  z-index: 100;
+
+  @include tabletWidth {
+    @include mainSizes(604px, 54px);
+
+    &:nth-child(2) {
+      @include mainSizes(407px, 54px);
+    }
+
+    &:nth-child(3) {
+      @include mainSizes(373px, 84px);
+    }
+
+    &:nth-child(4) {
+      @include mainSizes(581px, 54px);
+    }
+  }
+
+  @include desktopWidth {
+    @include mainSizes(604px, 54px);
+
+    &:nth-child(2) {
+      @include mainSizes(285px, 84px);
+      align-self: center;
+    }
+
+    &:nth-child(3) {
+      @include mainSizes(373px, 84px);
+      margin-top: -50px;
+    }
+
+    &:nth-child(4) {
+      align-self: center;
+    }
+  }
 }
 
 .user-field__user-message {
@@ -35,6 +76,30 @@
   margin: 0;
   padding: 12px 12px 12px 52px;
   position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    min-width: 12px;
+    min-height: 12px;
+    @include circleRadius;
+    bottom: -8px;
+    left: 30px;
+    background-color: #009A44;
+    opacity: 0.5;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    min-width: 8px;
+    min-height: 8px;
+    @include circleRadius;
+    bottom: -17px;
+    left: 40px;
+    background-color: #009A44;
+    opacity: 0.25;
+  }
 
   @include tabletWidth {
     @include sizeSetter(20px, 32px);
@@ -60,14 +125,14 @@
 
 .user-field__message-text {
   margin: 0;
-  max-height: 48px;
+  max-height: min-content;
 }
 
 .user-field__user-picture {
   @include mainSizes(45px, 45px);
   background: transparent;
   @include reCenterFlex;
-  margin-left: 62px;
+  margin-left: 50px;
 }
 
 .user-field__icon {
@@ -75,6 +140,11 @@
   background-image: url(../../img/svg/questions_icon-blue-shirtWoman.svg);
   background-size: contain;
   background-position: center;
+
+  @include desktopWidth {
+    @include mainSizes(55px, 55px);
+    background-size: contain;
+  }
 }
 
 .user-field__icon-yellow-shirtMan {
@@ -87,6 +157,19 @@
 
 .user-field__icon-rose-shirtWoman {
   background-image: url(../../img/svg/questions_icon-rose-shirtWoman.svg);
+
+  @include desktopWidth {
+    @include mainSizes(50px, 50px);
+  }
+}
+
+.questions__picture {
+
+  @include tabletWidth {
+    position: absolute;
+    top: 0;
+    left: 60%;
+  }
 }
 
 .questions__image {
@@ -94,20 +177,38 @@
   @include picSize(328px, 436px);
   background-color: $basic_img-background;
 
-  @include desktopWidth {
+  @include tabletWidth {
     @include picSize(380px, 630px);
+    z-index: -1000;
   }
 }
 
 .questions__description {
   background: $messages_background;
   border-radius: 16px 0px 0px 16px;
+  @include sizeSetter(15px, 24px);
+  font-weight: 500;
+
+  @include tabletWidth {
+    padding: 60px 40px;
+  }
 
   @include desktopWidth {
     @include sizeSetter(18px, 28.8px);
+    z-index: 1000;
   }
 }
 
 .questions__text {
   padding-left: 32px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: $basic_green;
+    left: 10px;
+  }
 }
